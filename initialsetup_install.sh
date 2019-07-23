@@ -2,6 +2,7 @@
 DATA_SHARE=/usr/share
 NGINX_CONFIG=/usr/share
 OVPN_DATA="ovpn-data"
+OVPN_URL="ha.bedards.net"
 
 
 ### Check root permissions
@@ -51,7 +52,7 @@ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.
 ### OpenVPN
 echo "[Info] Install OpenVPN..."
 docker volume create --name $OVPN_DATA
-docker run -v $OVPN_DATA:/etc/openvpn --rm giggio/openvpn-arm ovpn_genconfig -u udp://ha.bedards.net
+docker run -v $OVPN_DATA:/etc/openvpn --rm giggio/openvpn-arm ovpn_genconfig -u udp://$OVPN_URL
 docker run -v $OVPN_DATA:/etc/openvpn --rm -it giggio/openvpn-arm ovpn_initpki nopass
 
 docker run -v $OVPN_DATA:/etc/openvpn -d --name openvpn -p 1194:1194/udp --cap-add=NET_ADMIN giggio/openvpn-arm
