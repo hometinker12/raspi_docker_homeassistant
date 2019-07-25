@@ -1,8 +1,9 @@
 #!/bin/bash
-DATA_SHARE=/usr/share
-NGINX_CONFIG=/usr/share
-OVPN_DATA=/usr/share/ovpn-data
+DATA_SHARE=/dockerconfigs
+NGINX_CONFIG=/dockerconfigs
+OVPN_DATA=/dockerconfigs/ovpn-data
 OVPN_URL="ha.bedards.net"
+SMB_USER="pi"
 
 
 ### Check root permissions
@@ -12,6 +13,24 @@ if [ "$EUID" -ne 0 ]
   else "[Info] Root perms detected, continuing..."
 fi
 
+### Install Samba for Docker Config Admin
+echo "[Info] Create docker shared config directory ($DATA_SHARE)..."
+sudo mkdir -m 1777 $DATA_SHARE
+echo "[Info] Install samba for config directory access..."
+sudo apt-get install samba samba-common-bin
+sudo echo "[Folder Shares]" >> /etc/samba/smb.conf 
+sudo echo "  [Docker App Config]" >> /etc/samba/smb.conf 
+sudo echo "          Comment = Docker App Configs" >> /etc/samba/smb.conf 
+sudo echo "          Path = $DATA_SHARE" >> /etc/samba/smb.conf 
+sudo echo "          Browseable = yes" >> /etc/samba/smb.conf 
+sudo echo "          Writeable = Yes" >> /etc/samba/smb.conf 
+sudo echo "          only guest = no" >> /etc/samba/smb.conf 
+sudo echo "          create mask = 0777" >> /etc/samba/smb.conf 
+sudo echo "          directory mask = 0777" >> /etc/samba/smb.conf 
+sudo echo "          Public = no" >> /etc/samba/smb.conf 
+sudo echo "          Guest ok = no" >> /etc/samba/smb.conf 
+sudo smbpasswd -a $SMB_USER
+sudo /etc/init.d/samba restart
 
 ### Install Docker
 echo "[Info] Install docker..."
