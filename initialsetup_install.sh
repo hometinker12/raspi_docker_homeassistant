@@ -31,11 +31,11 @@ curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
 
 ### HomeAssistant
 echo "[Info] Install hassio pre-reqs..."
-apt-get install dbus
-apt-get install avahi-daemon
-apt-get install jq
-apt-get install apparmor-utils
-apt-get install network-manager
+apt-get --yes --force-yes install dbus
+apt-get --yes --force-yes install avahi-daemon
+apt-get --yes --force-yes install jq
+apt-get --yes --force-yes install apparmor-utils
+apt-get --yes --force-yes install network-manager
 
 echo "[Info] Install hassio..."
 echo "[Warn] Executing: https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh...."
