@@ -55,17 +55,16 @@ echo "[Info] Create openvpn config location ($DATA_SHARE$OVPN_DATA)..."
 mkdir $DATA_SHARE$OVPN_DATA
 echo "[Info] Create OpenVPN config..."
 docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm giggio/openvpn-arm ovpn_genconfig -u udp://$OVPN_URL
-echo "[Info] Install OpenVPN server certificate..."
-docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm -it giggio/openvpn-arm ovpn_initpki nopass
-echo "[Info] Start OpenVPN..."
-docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn -d --name openvpn -p 1194:1194/udp --cap-add=NET_ADMIN giggio/openvpn-arm
 
-### Get VPN Client Cert
-echo "[Info] Generate OpenVPN client cert..."
+### Run Commands
+echo "[Info] Generate OpenVPN addition ttyl commands to run..."
 mkdir $DATA_SHARE$OVPN_DATA/clientcert
 read -p "Enter the name of your pc client: " CLIENTNAME
-docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm -it giggio/openvpn-arm easyrsa build-client-full $CLIENTNAME nopass
-docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm giggio/openvpn-arm ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
+echo "---Run These Commands Individually---"
+echo "docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm -it giggio/openvpn-arm ovpn_initpki nopass"
+echo "docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn -d --name openvpn -p 1194:1194/udp --cap-add=NET_ADMIN giggio/openvpn-arm"
+echo "docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm -it giggio/openvpn-arm easyrsa build-client-full $CLIENTNAME nopass"
+echo "docker run -v $DATA_SHARE$OVPN_DATA:/etc/openvpn --rm giggio/openvpn-arm ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn"
 
 
 
