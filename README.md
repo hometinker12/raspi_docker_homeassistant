@@ -21,7 +21,7 @@ Set the ssl cert to the same as your hass.io certificate:
 ```bash
 docker stop portainer
 docker rm portainer
-docker run -d -p 9000:9000 --name portainer  --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /usr/share/portainer:/data portainer/portainer --ssl true --sslcert /usr/share/hassio/ssl/hassio.crt --sslkey /usr/share/hassio/ssl/hassio.key
+docker run -d -p 9000:9000 --name portainer  --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /usr/share/portainer:/data portainer/portainer --ssl true --sslcert /certs/cert.pem --sslkey /certs/cert.key
 ```
 
 ## Raspbian Stretch Lite Images
