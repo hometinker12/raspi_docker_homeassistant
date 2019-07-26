@@ -1,8 +1,5 @@
-# raspi_docker_homeassistant
+# Rasbian Docker and Hass.io (Home Assistant) Automated Install
 
-
-## Raspbian Stretch Lite 
-https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-04-09/
 
 ## Running Installer Script
 Must be run as root!
@@ -10,3 +7,6 @@ Must be run as root!
 sudo su
 curl -sL https://raw.githubusercontent.com/hometinker12/raspi_docker_homeassistant/master/initialsetup_install.sh | bash -s
 ```
+
+## Raspbian Stretch Lite Images
+https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-04-09/
