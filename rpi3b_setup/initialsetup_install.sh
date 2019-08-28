@@ -23,6 +23,7 @@ mkdir $DATA_SHARE
 
 ### Install Docker
 echo "[Info] Install docker..."
+echo "[Warn] Executing: get.docker.com -o get-docker.sh && sh get-docker.sh...."
 curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
 
 
