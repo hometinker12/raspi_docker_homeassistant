@@ -45,3 +45,6 @@ echo "[Info] Install portainer..."
 echo "[Info] Create portainer config location ($DATA_SHARE$PORTAINER_DATA)..."
 docker volume create $DATA_SHARE$PORTAINER_DATA/
 docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v $DATA_SHARE$PORTAINER_DATA:/data portainer/portainer
+#### Portainer SSL ##
+#docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v $DATA_SHARE$PORTAINER_DATA:/data -v $DATA_SHARE$HASSIO_DATA/ssl:/ssl portainer/portainer --ssl --sslcert /ssl/certChain.pem --sslkey /ssl/certKey.pem
+
