@@ -8,7 +8,7 @@ HASSIO_DATA=/hassio
 if [ "$EUID" -ne 0 ]
   then echo "[Error] Must be run as root!!!"
   exit
-  else "[Info] Root perms detected, continuing..."
+  else echo "[Info] Root perms detected, continuing..."
 fi
 
 ### Update Hostname
