@@ -5,7 +5,7 @@
 Must be run as root!
 ```bash
 sudo su
-curl -sL https://raw.githubusercontent.com/hometinker12/raspi_docker_homeassistant/master/initialsetup_install.sh | bash -s
+curl -sL https://raw.githubusercontent.com/hometinker12/raspi_docker_homeassistant/master/rpi3b_setup/initialsetup_install.sh | bash -s
 ```
 
 ## Post Install
