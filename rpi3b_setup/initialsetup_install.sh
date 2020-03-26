@@ -1,5 +1,5 @@
 #!/bin/bash
-DATA_SHARE=/usr/share
+DATA_SHARE=/docker
 PORTAINER_DATA=/portainer
 HASSIO_DATA=/hassio
 
@@ -37,7 +37,7 @@ apt-get --yes --force-yes install network-manager
 
 echo "[Info] Install hassio..."
 echo "[Warn] Executing: https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh...."
-curl -sL https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh | bash -s -- -m raspberrypi3 -d $DATA_SHARE$HASSIO_DATA
+curl -sL https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh | bash -s -- -m raspberrypi3 -p $DATA_SHARE -d $HASSIO_DATA
 
 
 ### Install Portainer (web based docker admin)
