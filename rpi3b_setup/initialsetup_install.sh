@@ -19,10 +19,10 @@ sed -i "s/raspberrypi/$HOST_NAME/" /etc/hosts
 ### Mount SDA1 to /Docker
 echo "[Info] -----Docker Data Mount to External Drive (/dev/sda1)-----"
 read -p "Create DATA_SHARE ($DATA_SHARE) (y/n) " UPDATE_DOCKER
-if [[ "$UPDATE_DOCKER" =~ ^([yY][eE][sS]|[yY])$ ]]
-    then read -p "Mount /dev/sda1 to $DATA_SHARE (y/n) " UPDATE_DOCKER
-    if [[ "$UPDATE_DOCKER" =~ ^([yY][eE][sS]|[yY])$ ]]
-            then echo "[Warn] Executing: get.docker.com -o get-docker.sh && sh get-docker.sh...."
+if [[ "$UPDATE_DOCKER" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    read -p "Mount /dev/sda1 to $DATA_SHARE (y/n) " UPDATE_DOCKER
+    if [[ "$UPDATE_DOCKER" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+            echo "[Warn] Executing: get.docker.com -o get-docker.sh && sh get-docker.sh...."
                     mkdir $DATA_SHARE
                     mount /dev/sda1 $DATA_SHARE
                     df -H
