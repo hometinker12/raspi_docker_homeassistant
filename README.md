@@ -4,8 +4,9 @@
 ## Running Installer Script
 Must be run as root!
 ```bash
-sudo su
-curl -sL https://raw.githubusercontent.com/hometinker12/raspi_docker_homeassistant/master/rpi3b_setup/initialsetup_install.sh | bash -s
+curl -sL "https://raw.githubusercontent.com/hometinker12/raspi_docker_homeassistant/master/rpi3b_setup/initialsetup_install.sh" >> initialsetup_install.sh
+chmod +x initialsetup_install.sh
+sudo ./initialsetup_install.sh
 ```
 
 ## Post Install
