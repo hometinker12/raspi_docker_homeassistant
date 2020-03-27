@@ -12,7 +12,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 ### Update Hostname
-read -p "Enter a new hostname for your docker host: " HOST_NAME
+read -p 'Enter a new hostname for your docker host: ' HOST_NAME
 sed -i "s/raspberrypi/$HOST_NAME/" /etc/hostname
 sed -i "s/raspberrypi/$HOST_NAME/" /etc/hosts
 
@@ -27,6 +27,8 @@ if [[ "$UPDATE_DOCKER" =~ ^([yY][eE][sS]|[yY])$ ]]; then
                     mount /dev/sda1 $DATA_SHARE
                     df -H
                     echo "/dev/sda1 /docker ext4 rw,relatime,stripe=1024 0 0" &>> /etc/fstab
+            else echo "[Info] Create Docker Data Folder (mkdir $DATA_SHARE)"
+                    mkdir $DATA_SHARE
     fi
 fi
 
