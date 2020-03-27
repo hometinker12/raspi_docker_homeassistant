@@ -1,7 +1,7 @@
 #!/bin/bash
-DATA_SHARE=/docker
-PORTAINER_DATA=/portainer
-HASSIO_DATA=/hassio
+DATA_SHARE="/docker"
+PORTAINER_DATA="/portainer"
+HASSIO_DATA="/hassio"
 
 
 ### Check root permissions
