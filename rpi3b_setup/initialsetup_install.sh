@@ -56,7 +56,8 @@ read -p "Install HASSIO? (y/n) " RESPONSE
 if [[ "$RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "[Info] Install hassio..."
     echo "[Warn] Executing: https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh...."
-    curl -sL https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh | bash -s -- -m raspberrypi3 -p $DATA_SHARE -d $HASSIO_DATA
+    mkdir -p "$DATA_SHARE$HASSIO_DATA/sbin/"
+    curl -sL https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh | bash -s -- -m raspberrypi3 -p $DATA_SHARE$HASSIO_DATA
 fi
 
 
