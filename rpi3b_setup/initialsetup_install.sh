@@ -13,5 +13,3 @@ fi
 
 ### Update Hostname
 read -p 'Enter a new hostname for your docker host: ' HOST_NAME
-sed -i "s/raspberrypi/$HOST_NAME/" /etc/hostname
-sed -i "s/raspberrypi/$HOST_NAME/" /etc/hosts
